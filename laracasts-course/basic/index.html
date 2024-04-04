@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <style>
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="greeting" />
+
+      <p>{{ greeting }} ({{ greeting.length }})</p>
+
+      <button :class="active ? 'red' : 'green'" @click="toggle">Click me</button>
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            greeting: 'Hello world!',
+            active: false
+          }
+        },
+
+        mounted() {
+          setTimeout(() => {
+            this.greeting = 'Changed'
+          }, 3000)
+        },
+
+        methods: {
+          toggle() {
+            this.active = !this.active
+          }
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>
